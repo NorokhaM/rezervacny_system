@@ -4,6 +4,8 @@ package com.hackaton.rezervacny_system.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Entity
 @Data
 @Table(name = "users")
@@ -19,4 +21,7 @@ public class MyUser {
     private String email;
     @Column
     private String role;
+
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
 }
