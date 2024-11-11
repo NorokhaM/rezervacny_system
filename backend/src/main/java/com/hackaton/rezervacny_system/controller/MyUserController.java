@@ -23,7 +23,13 @@ public class MyUserController {
     }
 
     @PostMapping("/registration")
-    public ResponseEntity<MyUser> registerUser(@RequestBody MyUser user) {
+    public ResponseEntity<?> registerUser(@RequestBody MyUser user) {
+        String email=user.getEmail();
+        String username=user.getUsername();
+        if (myUserService.existsByEmail(email) ||
+                myUserService.existsByUsername(username)) {
+            return ResponseEntity.status(409).body("User already exists");
+        }
         return ResponseEntity.ok(myUserService.registerUser(user));
     }
 
