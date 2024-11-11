@@ -1,5 +1,6 @@
 package com.hackaton.rezervacny_system.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -13,13 +14,13 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String date;
 
-    @Column
+    @Column(unique = true)
     private String time;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "playground_id", referencedColumnName = "id")
     private Playground playground;
 

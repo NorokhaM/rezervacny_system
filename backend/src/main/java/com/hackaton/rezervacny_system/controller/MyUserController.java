@@ -5,13 +5,11 @@ import com.hackaton.rezervacny_system.model.MyUser;
 import com.hackaton.rezervacny_system.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.security.Principal;
 
+@RequestMapping("/user")
 @RestController
 public class MyUserController {
 
@@ -22,25 +20,14 @@ public class MyUserController {
         this.myUserService = myUserService;
     }
 
-    @PostMapping("/registration")
-    public ResponseEntity<?> registerUser(@RequestBody MyUser user) {
-        String email=user.getEmail();
-        String username=user.getUsername();
-        if (myUserService.existsByEmail(email) ||
-                myUserService.existsByUsername(username)) {
-            return ResponseEntity.status(409).body("User already exists");
-        }
-        return ResponseEntity.ok(myUserService.registerUser(user));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody MyUser user) {
-        myUserService.findByEmailAndSetUsername(user);
-        return ResponseEntity.ok(myUserService.verifyUser(user));
-    }
-
     @GetMapping("/get")
-    public ResponseEntity<List<MyUser>> getAllUsers(){
-        return ResponseEntity.ok(myUserService.findAll());
+    public ResponseEntity<String> getUser(Principal principal){
+        return ResponseEntity.ok(principal.getName());
+    }
+
+    @GetMapping("/get/{username}")
+    public ResponseEntity<Long> getUserIdByUsername(@PathVariable String username){
+        Long userId = myUserService.findIdByUsername(username);
+        return ResponseEntity.ok(userId);
     }
 }

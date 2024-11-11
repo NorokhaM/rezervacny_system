@@ -52,25 +52,28 @@ public class MyUserService {
         return "User is not authenticated";
     }
 
-    public List<MyUser> findAll() {
-        return myUserRepository.findAll();
-    }
-
-    public Optional<MyUser> findByEmail(String email) {
-        return myUserRepository.findByEmail(email);
-    }
-
     public boolean existsByEmail(String email) {
-        return myUserRepository.findByEmail(email).isPresent();
+        return myUserRepository
+                .findByEmail(email)
+                .isPresent();
     }
 
     public boolean existsByUsername(String username) {
-        return myUserRepository.findByUsername(username).isPresent();
+        return myUserRepository
+                .findByUsername(username)
+                .isPresent();
     }
 
     public void findByEmailAndSetUsername(MyUser user) {
         myUserRepository
                 .findByEmail(user.getEmail())
                 .ifPresent(foundUser -> user.setUsername(foundUser.getUsername()));
+    }
+
+    public Long findIdByUsername(String username) {
+        return myUserRepository
+                .findByUsername(username)
+                .map(MyUser::getId)
+                .orElseThrow();
     }
 }

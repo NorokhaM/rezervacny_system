@@ -1,6 +1,8 @@
 package com.hackaton.rezervacny_system.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -23,5 +25,6 @@ public class MyUser {
     private String role;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<Reservation> reservations;
 }

@@ -1,8 +1,12 @@
 package com.hackaton.rezervacny_system.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -12,13 +16,14 @@ public class Playground {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
-    @Column
+    @Column(unique = true)
     private String address;
 
-    @OneToOne(mappedBy = "playground")
-    private Reservation reservation;
+    @OneToMany(mappedBy = "playground")
+    @JsonIgnore
+    private List<Reservation> reservations;
 
 }
