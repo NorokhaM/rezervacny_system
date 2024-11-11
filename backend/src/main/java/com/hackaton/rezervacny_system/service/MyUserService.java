@@ -11,6 +11,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MyUserService {
@@ -39,10 +40,10 @@ public class MyUserService {
     public String verifyUser(MyUser user) {
         Authentication authentication=
                 authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        user.getUsername(),
-                        user.getPassword())
-        );
+                        new UsernamePasswordAuthenticationToken(
+                                user.getUsername(),
+                                user.getPassword())
+                );
         System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         if (authentication.isAuthenticated()){
@@ -53,6 +54,18 @@ public class MyUserService {
 
     public List<MyUser> findAll() {
         return myUserRepository.findAll();
+    }
+
+    public Optional<MyUser> findByEmail(String email) {
+        return myUserRepository.findByEmail(email);
+    }
+
+    public boolean existsByEmail(String email) {
+        return myUserRepository.findByEmail(email).isPresent();
+    }
+
+    public boolean existsByUsername(String username) {
+        return myUserRepository.findByUsername(username).isPresent();
     }
 
     public void findByEmailAndSetUsername(MyUser user) {
