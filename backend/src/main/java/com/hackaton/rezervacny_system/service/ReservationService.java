@@ -46,4 +46,8 @@ public class ReservationService {
         return true;
     }
 
+    public List<String> getTimeReservationByPlaygroundIdAndDate(Long playgroundId, String date) {
+        return reservationRepository.findTimeByPlaygroundIdAndDate(playgroundId, date);
+    }
+
 }

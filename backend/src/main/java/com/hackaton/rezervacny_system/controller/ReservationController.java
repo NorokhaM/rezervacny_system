@@ -28,9 +28,14 @@ public class ReservationController {
         return ResponseEntity.ok(reservationService.getReservations());
     }
 
-    @GetMapping("/get/{userId}")
+    @GetMapping("/get/user/{userId}")
     public ResponseEntity<List<Reservation>> getReservationsByUserId(@PathVariable Long userId){
         return ResponseEntity.ok(reservationService.getReservationsByUserId(userId));
+    }
+
+    @GetMapping("/get/playground/{playgroundId}")
+    public ResponseEntity<List<String>> getTimeReservationByPlaygroundIdAndDate(@PathVariable Long playgroundId, @RequestParam String date){
+        return ResponseEntity.ok(reservationService.getTimeReservationByPlaygroundIdAndDate(playgroundId, date));
     }
 
     @DeleteMapping("/delete/{id}")
