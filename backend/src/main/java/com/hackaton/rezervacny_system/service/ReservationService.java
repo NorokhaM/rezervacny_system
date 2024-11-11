@@ -54,6 +54,12 @@ public class ReservationService {
         return reservationRepository.findTimeByPlaygroundIdAndDate(playgroundId, date);
     }
 
+    public boolean reservationExists(String date, String time, Long playgroundId) {
+        return reservationRepository
+                .findTimeByPlaygroundIdAndDate(playgroundId, date)
+                .contains(time);
+    }
+
     @Scheduled(cron = "0 0 * * * *")
     public void deletePastReservations() {
         List<Reservation> reservations = reservationRepository.findAll();

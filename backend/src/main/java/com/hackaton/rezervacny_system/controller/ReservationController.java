@@ -18,15 +18,15 @@ public class ReservationController {
     }
 
     @PostMapping("/add/{userId}/{playgroundId}")
-    public ResponseEntity<Reservation> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation){
+    public ResponseEntity<?> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation){
+        String date = reservation.getDate();
+        String time = reservation.getTime();
+        if (reservationService.reservationExists(date, time, playgroundId)){
+            return ResponseEntity.badRequest().body("Reservation already exists");
+        }
         return ResponseEntity.ok(reservationService.addReservation(reservation, userId, playgroundId));
     }
 
-
-    @GetMapping("/get")
-    public ResponseEntity<List<Reservation>> getAllReservations(){
-        return ResponseEntity.ok(reservationService.getReservations());
-    }
 
     @GetMapping("/get/user/{userId}")
     public ResponseEntity<List<Reservation>> getReservationsByUserId(@PathVariable Long userId){
