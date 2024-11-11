@@ -43,7 +43,7 @@ public class MyUserService {
                         user.getUsername(),
                         user.getPassword())
         );
-        System.out.println(user.getUsername()+"123");
+        System.out.println(user.getUsername());
         System.out.println(user.getPassword());
         if (authentication.isAuthenticated()){
             return jwtService.generateToken(user.getUsername());
@@ -53,5 +53,11 @@ public class MyUserService {
 
     public List<MyUser> findAll() {
         return myUserRepository.findAll();
+    }
+
+    public void findByEmailAndSetUsername(MyUser user) {
+        myUserRepository
+                .findByEmail(user.getEmail())
+                .ifPresent(foundUser -> user.setUsername(foundUser.getUsername()));
     }
 }

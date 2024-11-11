@@ -29,6 +29,7 @@ public class MyUserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> loginUser(@RequestBody MyUser user) {
+        myUserService.findByEmailAndSetUsername(user);
         return ResponseEntity.ok(myUserService.verifyUser(user));
     }
 

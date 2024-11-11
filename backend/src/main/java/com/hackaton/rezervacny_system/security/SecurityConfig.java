@@ -2,9 +2,7 @@ package com.hackaton.rezervacny_system.security;
 
 
 import com.hackaton.rezervacny_system.filter.JwtFilter;
-import com.hackaton.rezervacny_system.service.JwtService;
 import com.hackaton.rezervacny_system.service.MyUserDetailService;
-import jakarta.security.auth.message.config.AuthConfigFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
