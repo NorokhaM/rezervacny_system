@@ -4,9 +4,13 @@ import com.hackaton.rezervacny_system.model.Reservation;
 import com.hackaton.rezervacny_system.repository.MyUserRepository;
 import com.hackaton.rezervacny_system.repository.PlaygroundRepository;
 import com.hackaton.rezervacny_system.repository.ReservationRepository;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -50,4 +54,17 @@ public class ReservationService {
         return reservationRepository.findTimeByPlaygroundIdAndDate(playgroundId, date);
     }
 
+    @Scheduled(cron = "0 0 * * * *")
+    public void deletePastReservations() {
+        List<Reservation> reservations = reservationRepository.findAll();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
+
+        for (Reservation reservation : reservations) {
+            LocalDateTime reservationDateTime = LocalDateTime.parse(reservation.getDate() + " " + reservation.getTime(), formatter);
+            if (reservationDateTime.isBefore(now)) {
+                reservationRepository.delete(reservation);
+            }
+        }
+    }
 }
