@@ -10,21 +10,20 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "users")
-public class MyUser {
+@Table(name = "playgrounds")
+public class Playground {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
-    private String username;
-    @Column
-    private String password;
-    @Column
-    private String email;
-    @Column
-    private String role;
 
-    @OneToMany(mappedBy = "user")
+    @Column(unique = true)
+    private String name;
+
+    @Column(unique = true)
+    private String address;
+
+    @OneToMany(mappedBy = "playground")
     @JsonIgnore
     private List<Reservation> reservations;
+
 }
