@@ -1,6 +1,7 @@
 package com.hackaton.rezervacny_system.controller;
 
 import com.hackaton.rezervacny_system.model.Reservation;
+import com.hackaton.rezervacny_system.service.KeyGeneratorService;
 import com.hackaton.rezervacny_system.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
