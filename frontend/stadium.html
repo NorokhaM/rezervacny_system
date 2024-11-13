@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Choose Stadium</title>
+  </head>
+  <body>
+    <div class="phone-container">
+      <div class="header">
+        <div class="back-button">←</div>
+        <div class="title">Choose Stadium</div>
+      </div>
+
+      <div class="search-bar">
+        🔍 <input type="text" placeholder="Search stadiums..." />
+      </div>
+
+      <button
+        class="stadium-card"
+        onclick="window.location.href='calendar.html'"
+      >
+        <div class="stadium-name">Olympic Stadium</div>
+        <div class="stadium-address">
+          123 Olympic Ave, Sports City, SC 12345
+        </div>
+        <div class="stadium-specs">
+          <div class="spec-item">80,000 seats</div>
+          <div class="spec-item">Natural grass</div>
+          <div class="spec-item">Covered</div>
+        </div>
+        <div class="stadium-footer">
+          <div class="rating">★★★★★ 4.8</div>
+          <div class="price">$200/hr</div>
+        </div>
+      </button>
+
+      <button
+        class="stadium-card"
+        onclick="window.location.href='calendar.html'"
+      >
+        <div class="stadium-name">Central Arena</div>
+        <div class="stadium-address">456 Sports Blvd, Downtown, DT 67890</div>
+        <div class="stadium-specs">
+          <div class="spec-item">45,000 seats</div>
+          <div class="spec-item">Artificial turf</div>
+          <div class="spec-item">Indoor</div>
+        </div>
+        <div class="stadium-footer">
+          <div class="rating">★★★★☆ 4.2</div>
+          <div class="price">$150/hr</div>
+        </div>
+      </button>
+
+      <button class="stadium-card" onclick="window.location.href='calendar.html'">
+        <div class="stadium-name">Community Field</div>
+        <div class="stadium-address">789 Local Street, Suburb, SB 34567</div>
+        <div class="stadium-specs">
+          <div class="spec-item">15,000 seats</div>
+          <div class="spec-item">Natural grass</div>
+          <div class="spec-item">Open air</div>
+        </div>
+        <div class="stadium-footer">
+          <div class="rating">★★★★☆ 4.0</div>
+          <div class="price">$100/hr</div>
+        </div>
+      </div>
+    </button>
+
+    <script>
+      document.querySelector(".back-button").addEventListener("click", () => {
+        window.history.back();
+      });
+
+      document.querySelectorAll(".stadium-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          // Navigate to booking page for selected stadium
+          console.log(
+            "Selected stadium:",
+            card.querySelector(".stadium-name").textContent
+          );
+        });
+      });
+
+      document
+        .querySelector(".search-bar input")
+        .addEventListener("input", (e) => {
+          const searchTerm = e.target.value.toLowerCase();
+          document.querySelectorAll(".stadium-card").forEach((card) => {
+            const stadiumName = card
+              .querySelector(".stadium-name")
+              .textContent.toLowerCase();
+            const stadiumAddress = card
+              .querySelector(".stadium-address")
+              .textContent.toLowerCase();
+            card.style.display =
+              stadiumName.includes(searchTerm) ||
+              stadiumAddress.includes(searchTerm)
+                ? "block"
+                : "none";
+          });
+        });
+    </script>
+  </body>
+</html>

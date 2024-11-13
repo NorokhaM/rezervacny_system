@@ -1,0 +1,562 @@
+/* Calendar */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+body {
+  background: #f3f3e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.phone-container {
+  width: 320px;
+  background: white;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  text-align: center;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 0.8em;
+  color: #666;
+  padding: 5px 0;
+}
+
+.date {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #dde6ff;
+  border-radius: 50%;
+  font-size: 0.9em;
+  color: #333;
+  cursor: pointer;
+}
+
+.date.active {
+  background: #2962ff;
+  color: white;
+}
+
+.reservations {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.reservation-title {
+  text-transform: uppercase;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.reservation-details {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.reservation-time {
+  color: #2962ff;
+  font-weight: bold;
+}
+
+.no-reservations {
+  color: #666;
+  font-size: 0.9em;
+}
+
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.nav-item {
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: #666;
+  font-size: 1.5em;
+}
+/* Calendar End*/
+
+/* Main */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segura UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.decorative-elements {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 40%;
+  overflow: hidden;
+}
+
+.circle {
+  position: absolute;
+  background-color: #608bc1;
+  border-radius: 50%;
+}
+
+.circle-1 {
+  width: 200px;
+  height: 200px;
+  top: -100px;
+  left: -100px;
+  /* opacity: 0.2; */
+}
+
+.circle-2 {
+  width: 40px;
+  height: 40px;
+  top: 40px;
+  left: 60px;
+  /* opacity: 0.15; */
+}
+
+.circle-3 {
+  width: 20px;
+  height: 20px;
+  top: 90px;
+  left: 40px;
+  /* opacity: 0.1; */
+}
+
+.diagonal-line {
+  position: relative;
+  width: 2px;
+  height: 100%;
+  background-color: var(--primary-blue);
+  transform: rotate(-15deg);
+  left: 300px;
+  top: -100px;
+  /* opacity: 0.1; */
+}
+
+.buttons-container {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: #133e87;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #133e87;
+  color: white;
+}
+/* Main End*/
+
+/* Sign In */
+:root {
+  --primary-blue: #2557a7;
+  --bg-color: #f3f3e0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segura UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 20px;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-button svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-blue);
+}
+
+.form-container {
+  margin-top: 100px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 40px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+}
+
+.forgot-password {
+  text-align: right;
+  margin-top: 12px;
+}
+
+.forgot-password a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: var(--primary-blue);
+  color: white;
+  margin-top: 40px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+/* Sign In End */
+
+/* Sign Up */
+:root {
+  --primary-blue: #2557a7;
+  --bg-color: #f3f3e0;
+  --input-bg: #f3f2ef;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segura UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+}
+
+.back-button {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.back-arrow {
+  width: 24px;
+  height: 24px;
+  fill: var(--primary-blue);
+}
+
+.form-container {
+  margin-top: 80px;
+}
+
+h1 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 32px;
+}
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+input {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--input-bg);
+  font-size: 16px;
+}
+
+input:focus {
+  outline: 2px solid var(--primary-blue);
+}
+
+.btn {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  background-color: var(--primary-blue);
+  color: white;
+  margin-top: 32px;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.terms {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+.terms a {
+  color: var(--primary-blue);
+  text-decoration: none;
+}
+/* Sign Up End*/
+
+/* Stadium */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+body {
+  background: #f3f3e0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.phone-container {
+  width: 320px;
+  background: white;
+  border-radius: 25px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.back-button {
+  font-size: 1.2em;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.title {
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.search-bar {
+  background: #f5f5f5;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.search-bar input {
+  border: none;
+  background: none;
+  width: 100%;
+  padding: 5px;
+  outline: none;
+}
+
+.stadium-card {
+  border: none;
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.stadium-card:hover {
+  transform: translateY(-2px);
+}
+
+.stadium-name {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.stadium-address {
+  color: #666;
+  font-size: 0.9em;
+  margin-bottom: 10px;
+}
+
+.stadium-specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.spec-item {
+  background: #e8eaf6;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 0.8em;
+  color: #3f51b5;
+}
+
+.stadium-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.price {
+  font-weight: bold;
+  color: #2962ff;
+}
+
+/* Stadium End */
