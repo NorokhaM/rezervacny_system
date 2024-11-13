@@ -4,7 +4,6 @@ import com.hackaton.rezervacny_system.model.Reservation;
 import com.hackaton.rezervacny_system.repository.MyUserRepository;
 import com.hackaton.rezervacny_system.repository.PlaygroundRepository;
 import com.hackaton.rezervacny_system.repository.ReservationRepository;
-import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -19,20 +18,27 @@ public class ReservationService {
     private final ReservationRepository reservationRepository;
     private final MyUserRepository myUserRepository;
     private final PlaygroundRepository playgroundRepository;
+    private final KeyGeneratorService keyGeneratorService;
+    private final QrCodeService qrCodeService;
 
     @Autowired
-    public ReservationService(ReservationRepository reservationRepository, MyUserRepository myUserRepository, PlaygroundRepository playgroundRepository) {
+    public ReservationService(ReservationRepository reservationRepository, MyUserRepository myUserRepository, PlaygroundRepository playgroundRepository, KeyGeneratorService keyGeneratorService, QrCodeService qrCodeService) {
         this.reservationRepository = reservationRepository;
         this.myUserRepository = myUserRepository;
         this.playgroundRepository = playgroundRepository;
+        this.keyGeneratorService = keyGeneratorService;
+        this.qrCodeService = qrCodeService;
     }
 
-    public Reservation addReservation(Reservation reservation, Long userId, Long playgroundId) {
+    public Reservation addReservation(Reservation reservation, Long userId, Long playgroundId) throws Exception{
         reservation.setUser(
                 myUserRepository.findById(userId).orElseThrow()
         );
         reservation.setPlayground(
                 playgroundRepository.findById(playgroundId).orElseThrow()
+        );
+        reservation.setQrCode(
+                qrCodeService.saveQrCode(keyGeneratorService.generateKey())
         );
         return reservationRepository.save(reservation);
     }

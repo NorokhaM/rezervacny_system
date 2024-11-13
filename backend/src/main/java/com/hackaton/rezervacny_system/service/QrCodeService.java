@@ -50,6 +50,11 @@ public class QrCodeService {
         return result.getText();
     }
 
+    public boolean compareQrCodes(String data, Long id) throws IOException, NotFoundException {
+        String qrCodeData = readQRCode(getQrCodeImage(id));
+        return qrCodeData.equals(data);
+    }
+
     public byte[] getQrCodeImage(Long id) {
         return qrCodeRepository
                 .findById(id)

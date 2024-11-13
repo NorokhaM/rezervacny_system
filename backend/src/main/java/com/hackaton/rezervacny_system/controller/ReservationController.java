@@ -1,7 +1,6 @@
 package com.hackaton.rezervacny_system.controller;
 
 import com.hackaton.rezervacny_system.model.Reservation;
-import com.hackaton.rezervacny_system.service.KeyGeneratorService;
 import com.hackaton.rezervacny_system.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +18,7 @@ public class ReservationController {
     }
 
     @PostMapping("/add/{userId}/{playgroundId}")
-    public ResponseEntity<?> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation){
+    public ResponseEntity<?> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation) throws Exception{
         String date = reservation.getDate();
         String time = reservation.getTime();
         if (reservationService.reservationExists(date, time, playgroundId)){
