@@ -1,208 +1,95 @@
-<html><head><base href="/">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choose Time</title>
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+<html>
+  <head>
+    <base href="/" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/style/style.css" />
+    <title>Choose Time</title>
+  </head>
+  <body>
+    <div class="phone-container">
+      <div class="header">
+        <div class="back-button">←</div>
+        <div class="title">Choose Time</div>
+      </div>
 
-body {
-  background: #f0f0f0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+      <div class="date-selector">
+        <div class="date-item selected">
+          <div class="date-day">Mon</div>
+          <div class="date-date">15</div>
+        </div>
+        <div class="date-item">
+          <div class="date-day">Tue</div>
+          <div class="date-date">16</div>
+        </div>
+        <div class="date-item">
+          <div class="date-day">Wed</div>
+          <div class="date-date">17</div>
+        </div>
+        <div class="date-item">
+          <div class="date-day">Thu</div>
+          <div class="date-date">18</div>
+        </div>
+        <div class="date-item">
+          <div class="date-day">Fri</div>
+          <div class="date-date">19</div>
+        </div>
+      </div>
 
-.phone-container {
-  width: 320px;
-  background: white;
-  border-radius: 25px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  max-height: 90vh;
-  overflow-y: auto;
-}
+      <div class="time-slots">
+        <div class="time-slot">9:00 AM</div>
+        <div class="time-slot">10:00 AM</div>
+        <div class="time-slot selected">11:00 AM</div>
+        <div class="time-slot">12:00 PM</div>
+        <div class="time-slot unavailable">1:00 PM</div>
+        <div class="time-slot">2:00 PM</div>
+        <div class="time-slot">3:00 PM</div>
+        <div class="time-slot unavailable">4:00 PM</div>
+        <div class="time-slot">5:00 PM</div>
+        <div class="time-slot">6:00 PM</div>
+      </div>
 
-.header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.back-button {
-  font-size: 1.2em;
-  margin-right: 15px;
-  cursor: pointer;
-}
-
-.title {
-  font-weight: bold;
-  flex-grow: 1;
-}
-
-.date-selector {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding: 10px 0;
-  margin-bottom: 20px;
-}
-
-.date-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 60px;
-  padding: 10px;
-  border-radius: 15px;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.date-item.selected {
-  background: #2962ff;
-  color: white;
-}
-
-.date-day {
-  font-weight: bold;
-  font-size: 1.2em;
-}
-
-.date-date {
-  font-size: 0.9em;
-}
-
-.time-slots {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-}
-
-.time-slot {
-  background: #f5f5f5;
-  padding: 15px;
-  border-radius: 15px;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.time-slot:hover {
-  background: #e8eaf6;
-}
-
-.time-slot.selected {
-  background: #2962ff;
-  color: white;
-}
-
-.time-slot.unavailable {
-  background: #f0f0f0;
-  color: #999;
-  cursor: not-allowed;
-}
-
-.book-button {
-  background: #2962ff;
-  color: white;
-  padding: 15px;
-  border-radius: 15px;
-  text-align: center;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.book-button:hover {
-  background: #1e4bd8;
-}
-</style>
-</head>
-<body>
-<div class="phone-container">
-  <div class="header">
-    <div class="back-button">←</div>
-    <div class="title">Choose Time</div>
-  </div>
-
-  <div class="date-selector">
-    <div class="date-item selected">
-      <div class="date-day">Mon</div>
-      <div class="date-date">15</div>
+      <div class="book-button">Book Now</div>
     </div>
-    <div class="date-item">
-      <div class="date-day">Tue</div>
-      <div class="date-date">16</div>
-    </div>
-    <div class="date-item">
-      <div class="date-day">Wed</div>
-      <div class="date-date">17</div>
-    </div>
-    <div class="date-item">
-      <div class="date-day">Thu</div>
-      <div class="date-date">18</div>
-    </div>
-    <div class="date-item">
-      <div class="date-day">Fri</div>
-      <div class="date-date">19</div>
-    </div>
-  </div>
 
-  <div class="time-slots">
-    <div class="time-slot">9:00 AM</div>
-    <div class="time-slot">10:00 AM</div>
-    <div class="time-slot selected">11:00 AM</div>
-    <div class="time-slot">12:00 PM</div>
-    <div class="time-slot unavailable">1:00 PM</div>
-    <div class="time-slot">2:00 PM</div>
-    <div class="time-slot">3:00 PM</div>
-    <div class="time-slot unavailable">4:00 PM</div>
-    <div class="time-slot">5:00 PM</div>
-    <div class="time-slot">6:00 PM</div>
-  </div>
+    <script>
+      document.querySelector(".back-button").addEventListener("click", () => {
+        window.history.back();
+      });
 
-  <div class="book-button">Book Now</div>
-</div>
+      document.querySelectorAll(".date-item").forEach((item) => {
+        item.addEventListener("click", () => {
+          document
+            .querySelectorAll(".date-item")
+            .forEach((i) => i.classList.remove("selected"));
+          item.classList.add("selected");
+        });
+      });
 
-<script>
-document.querySelector('.back-button').addEventListener('click', () => {
-  window.history.back();
-});
+      document.querySelectorAll(".time-slot").forEach((slot) => {
+        if (!slot.classList.contains("unavailable")) {
+          slot.addEventListener("click", () => {
+            document
+              .querySelectorAll(".time-slot")
+              .forEach((s) => s.classList.remove("selected"));
+            slot.classList.add("selected");
+          });
+        }
+      });
 
-document.querySelectorAll('.date-item').forEach(item => {
-  item.addEventListener('click', () => {
-    document.querySelectorAll('.date-item').forEach(i => i.classList.remove('selected'));
-    item.classList.add('selected');
-  });
-});
+      document.querySelector(".book-button").addEventListener("click", () => {
+        const selectedDate = document.querySelector(".date-item.selected");
+        const selectedTime = document.querySelector(".time-slot.selected");
 
-document.querySelectorAll('.time-slot').forEach(slot => {
-  if (!slot.classList.contains('unavailable')) {
-    slot.addEventListener('click', () => {
-      document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-      slot.classList.add('selected');
-    });
-  }
-});
+        if (selectedDate && selectedTime) {
+          const date = selectedDate.querySelector(".date-date").textContent;
+          const day = selectedDate.querySelector(".date-day").textContent;
+          const time = selectedTime.textContent;
 
-document.querySelector('.book-button').addEventListener('click', () => {
-  const selectedDate = document.querySelector('.date-item.selected');
-  const selectedTime = document.querySelector('.time-slot.selected');
-  
-  if (selectedDate && selectedTime) {
-    const date = selectedDate.querySelector('.date-date').textContent;
-    const day = selectedDate.querySelector('.date-day').textContent;
-    const time = selectedTime.textContent;
-    
-    console.log('Booking confirmed for:', `${day} ${date} at ${time}`);
-    // Here you would typically navigate to a confirmation page
-  }
-});
-</script>
-</body></html>
+          console.log("Booking confirmed for:", `${day} ${date} at ${time}`);
+          // Here you would typically navigate to a confirmation page
+        }
+      });
+    </script>
+  </body>
+</html>
