@@ -18,7 +18,7 @@ public class ReservationController {
     }
 
     @PostMapping("/add/{userId}/{playgroundId}")
-    public ResponseEntity<?> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation){
+    public ResponseEntity<?> addReservation(@PathVariable Long userId, @PathVariable Long playgroundId, @RequestBody Reservation reservation) throws Exception{
         String date = reservation.getDate();
         String time = reservation.getTime();
         if (reservationService.reservationExists(date, time, playgroundId)){

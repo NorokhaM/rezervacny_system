@@ -28,4 +28,8 @@ public class Reservation {
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @JsonIgnore
     private MyUser user;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "qr_code_id", referencedColumnName = "id")
+    private QrCode qrCode;
 }
