@@ -14,11 +14,14 @@ public class Reservation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
+    @Column
     private String date;
 
-    @Column(unique = true)
+    @Column
     private String time;
+
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @ManyToOne
     @JoinColumn(name = "playground_id", referencedColumnName = "id")

@@ -1,6 +1,7 @@
 package com.hackaton.rezervacny_system.service;
 
 import com.hackaton.rezervacny_system.model.Reservation;
+import com.hackaton.rezervacny_system.model.Status;
 import com.hackaton.rezervacny_system.repository.MyUserRepository;
 import com.hackaton.rezervacny_system.repository.PlaygroundRepository;
 import com.hackaton.rezervacny_system.repository.ReservationRepository;
@@ -71,10 +72,9 @@ public class ReservationService {
         List<Reservation> reservations = reservationRepository.findAll();
         LocalDateTime now = LocalDateTime.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");
-
         for (Reservation reservation : reservations) {
             LocalDateTime reservationDateTime = LocalDateTime.parse(reservation.getDate() + " " + reservation.getTime(), formatter);
-            if (reservationDateTime.isBefore(now)) {
+            if (reservationDateTime.isBefore(now) && reservation.getStatus().equals(Status.ONCE)) {
                 reservationRepository.delete(reservation);
             }
         }
